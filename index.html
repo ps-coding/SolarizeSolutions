@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Solarize Solutions</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .textContainer {
+        display: inline-block;
+      }
+
+      .container {
+        position: relative;
+        width: 50%;
+        margin: auto;
+      }
+      .image {
+        display: block;
+
+        width: 100%;
+        height: auto;
+      }
+      .overlay {
+        position: absolute;
+        top: 15%;
+        bottom: 0;
+        left: 20.5%;
+        height: 25%;
+        width: 25%;
+        transition: 0.7s ease;
+      }
+      .text {
+        color: white;
+        font-size: 18px;
+        position: absolute;
+        top: 100%;
+        left: 10%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+
+      .rotate {
+        width: 95%;
+        animation: rotation 8s infinite linear;
+      }
+
+      @keyframes rotation {
+        0% {
+          transform: scale(1.3) rotate(0deg);
+        }
+        50% {
+          transform: scale(0.8) rotate(180deg);
+        }
+        100% {
+          transform: scale(1.3) rotate(359deg);
+        }
+      }
+
+      #logo {
+        position: relative;
+        left: 0;
+        top: 0;
+      }
+
+      #logo #d {
+        position: absolute;
+        margin-top: -5%;
+        width: 50vw;
+        height: 12vw;
+        font-family: Verdana;
+        white-space: wrap;
+        font-weight: bolder;
+        -webkit-text-stroke: black;
+        -webkit-text-stroke-width: 2px;
+      }
+
+      #logo #words {
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+
+      #logo #words #sun {
+        position: absolute;
+        top: 1160px;
+        left: 80px;
+      }
+
+      .content h2 {
+        font-size: 1.5vw;
+        backdrop-filter: blur(20px);
+        font-family: "Courier New", Courier, monospace;
+        font-weight: bold;
+        border-right: 5px solid white;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: textTyping 5s steps(84),
+          textCursor 0.5s step-end infinite alternate;
+      }
+
+      @media (max-width: 800px) {
+        .content h2 {
+          display: block;
+          font-size: 1.2rem;
+          padding: 0.5rem;
+          animation: none;
+          overflow: visible;
+          white-space: normal;
+          border: none;
+          width: unset;
+          border-radius: 10px;
+          margin: 0 5px;
+        }
+      }
+
+      @keyframes textCursor {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      @keyframes textTyping {
+        from {
+          width: 0;
+        }
+      }
+
+      .content {
+        text-align: center;
+        margin-top: 10%;
+      }
+
+      #misc {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0)
+        );
+        backdrop-filter: blur(10px);
+        color: white;
+        -webkit-backdrop-filter: blur(10px);
+        width: 250px;
+        padding: 15px 0;
+        text-align: center;
+        margin: 20px 10px;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        background: transparent;
+        cursor: pointer;
+        transition-property: transform, background-color, color, border;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+      }
+
+      #misc:hover {
+        transform: translateY(-1rem);
+        color: white;
+        background-color: rgba(30, 30, 30, 0.8);
+        transform: scale(107.5%, 107.5%);
+      }
+
+      .openable {
+        margin-top: 5%;
+        background-color: transparent;
+        max-width: 20%;
+        border-radius: 10px;
+        display: inline-block;
+      }
+
+      .header {
+        color: white;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0)
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 0 solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        font-family: "Poppins", sans-serif;
+        font-weight: 900;
+        position: relative;
+        width: 90%;
+        height: 100px;
+        font-size: 1rem;
+        transition: 0.8s;
+      }
+
+      .header:hover {
+        background-color: black;
+        border: 4px solid white;
+        color: white;
+      }
+
+      .openable .content {
+        height: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 20, 0.1),
+          rgba(255, 255, 255, 0)
+        );
+        backdrop-filter: blur(100px);
+        -webkit-backdrop-filter: blur(100px);
+        border-radius: 20px;
+        border: 0 solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.5s ease-out;
+      }
+
+      .openable .content * {
+        overflow: hidden;
+        padding-inline: 1rem;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      .openable.open .content {
+        height: auto;
+        grid-template-rows: 1fr;
+      }
+    </style>
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <video autoplay muted loop id="myVideo" class="background">
+      <source src="media/bgmov.mp4" type="video/mp4" />
+    </video>
+
+    <main>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="cost.html">Cost</a></li>
+          <li><a href="rebate.html">Rebate</a></li>
+          <li><a href="practices.html">Green Practices</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="workscited.html">References</a></li>
+        </ul>
+      </nav>
+    </main>
+
+    <div class="content">
+      <div class="container">
+        <img src="media/reggrnWords.png" alt="travel" class="image" />
+        <div class="overlay">
+          <div class="text">
+            <img src="media/sun.png" alt="travel" class="rotate" />
+          </div>
+        </div>
+      </div>
+      <div class="textContainer">
+        <h2>
+          We are making the world greener, one step at a time. Have a look
+          around to learn more.
+        </h2>
+      </div>
+      <div>
+        <button
+          id="misc"
+          type="button"
+          onclick="location.href = 'contact.html';"
+        >
+          CONTACT US
+        </button>
+        <button
+          id="misc"
+          type="button"
+          onclick="location.href = 'partners.html';"
+        >
+          OUR PARTNERS
+        </button>
+      </div>
+
+      <div class="openable">
+        <button class="header" id="btn1" onclick="openOpenable(this)">
+          Who are we? ▼
+        </button>
+        <div class="content">
+          <p>
+            We are a consulting firm that has a mission to change the way humans
+            interact with the world from an environmental point of view. Our
+            website offers a suite of information you can utilize in order to be
+            a more eco-friendly person.
+          </p>
+        </div>
+      </div>
+      <div class="openable">
+        <button class="header" id="btn2" onclick="openOpenable(this)">
+          Where are we? ▼
+        </button>
+        <div class="content">
+          <p>
+            We are situated in Princeton, New Jersey; however, there are many
+            ways to find us virtually. You can contact us through this website
+            or call us through the number 1-800-676-7432 for further questions
+            related to any environmental topic.
+          </p>
+        </div>
+      </div>
+      <div class="openable">
+        <button class="header" id="btn3" onclick="openOpenable(this)">
+          Why us? ▼
+        </button>
+        <div class="content">
+          <p>
+            Our services are easy and reliable. Whether it is inquiring about
+            installing solar panels on your home or looking for ways you can
+            reduce your footprint by changing your daily habits, Solarize
+            Solutions has all of the information you may need.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function openOpenable(e) {
+        e.parentElement.classList.toggle("open");
+        if (e.parentElement.classList.contains("open")) {
+          e.parentElement.children[1].scrollIntoView({ behavior: "smooth" });
+          e.innerHTML = e.innerHTML.replace("▼", "▲");
+        } else {
+          e.innerHTML = e.innerHTML.replace("▲", "▼");
+        }
+      }
+    </script>
+  </body>
+</html>

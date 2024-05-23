@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Practices - Solarize Solutions</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      .grid {
+        display: grid;
+        margin-top: 2rem;
+        grid-template-columns: 25% 25% 25%;
+        grid-auto-rows: auto;
+        padding-bottom: 15vw;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: space-evenly;
+        justify-items: center;
+        align-content: space-evenly;
+        align-items: center;
+        position: static;
+        row-gap: 2rem;
+      }
+
+      @media (max-width: 800px) {
+        .grid {
+          grid-template-columns: 30% 30%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .grid {
+          grid-template-columns: 45%;
+        }
+      }
+
+      body {
+        min-height: 1500px;
+        overflow-x: hidden;
+      }
+
+      .navbar ul {
+        list-style-type: none;
+        background-color: #1c1c1c;
+        padding: 0px;
+        margin: 0px;
+        overflow: hidden;
+      }
+
+      .navbar a {
+        color: cyan;
+        text-decoration: solid;
+        font-family: "Poppins", sans-serif;
+        font-size: 5vw;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        text-align: center;
+
+        transition-property: text-decoration;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+      }
+
+      .navbar li {
+        float: left;
+
+        transition-property: background-color;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+      }
+
+      .box {
+        position: relative;
+        text-align: center;
+        width: fit-content;
+        height: fit-content;
+      }
+
+      .title {
+        font-size: 2rem;
+        font-family: "Poppins", sans-serif;
+        color: black;
+
+        -webkit-text-stroke-color: cyan;
+        -webkit-text-stroke-width: 1px;
+        font-weight: bold;
+        position: absolute;
+        left: 50%;
+        top: 30px;
+        transform: translate(-50%, 0);
+        opacity: 0;
+
+        transition-property: opacity;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+      }
+
+      .flexImg {
+        position: relative;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        width: 100%;
+
+        transition-property: border, border-radius, filter;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+      }
+
+      .box:hover > .title {
+        opacity: 1;
+      }
+
+      .navbar a:hover {
+        text-decoration: underline;
+      }
+
+      .navbar li:hover {
+        background-color: #6d6d6d;
+      }
+
+      .box:hover > img {
+        border: 4px solid cyan;
+        border-radius: 100%;
+        opacity: 0.7;
+        filter: blur(1.25px);
+      }
+
+      #parallax {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        object-fit: cover;
+      }
+
+      #parallax:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 500px;
+        background: linear-gradient(to top, #000000, transparent);
+        z-index: 10;
+        mix-blend-mode: color;
+      }
+
+      #titleDiv {
+        display: flex;
+        height: 200%;
+      }
+
+      #titleGreen {
+        z-index: 11;
+        position: relative;
+        color: #ffffff;
+        font-size: 8vw;
+        text-align: center;
+        z-index: 0;
+        text-shadow: 4px 4px 8px #ffffff;
+        margin-top: 40vw;
+        height: 10vw;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        min-height: 100vh;
+        max-width: 100%;
+
+        animation: typing 2s, cursor 0.4s step-end infinite alternate;
+      }
+
+      #parallax img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+      }
+
+      #green {
+        color: rgba(0, 255, 0, 0.8);
+        text-shadow: 4px 4px 8px #00ff00;
+        animation: glow 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 10px limegreen, 0 0 20px limegreen,
+            0 0 30px limegreen, 0 0 40px limegreen, 0 0 50px limegreen;
+        }
+        to {
+          text-shadow: 0 0 60px limegreen, 0 0 70px limegreen;
+        }
+      }
+
+      @keyframes cursor {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        #titleGreen {
+          top: 30%;
+        }
+      }
+
+      #text {
+        display: grid;
+        font-size: 1.4vw;
+        place-items: center;
+        align-content: center;
+        text-align: center;
+        margin: 0 auto;
+        font-family: monospace;
+        text-shadow: 2px 2px darkgreen;
+        white-space: nowrap;
+        max-width: 100%;
+        overflow: clip;
+        animation: textTyping 5s steps(146),
+          textCursor 0.5s step-end infinite alternate;
+      }
+
+      @media (max-width: 800px) {
+        #text {
+          display: block;
+          font-size: 0.7rem;
+          animation: none;
+          overflow: visible;
+          white-space: normal;
+          border: none;
+        }
+      }
+
+      @keyframes textCursor {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      @keyframes textTyping {
+        0% {
+          width: 0;
+          border-right: 2px solid white;
+        }
+
+        99% {
+          border-right: 2px solid white;
+        }
+
+        100% {
+          width: 100%;
+          border-right: none;
+        }
+      }
+
+      #textContainer {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+      }
+
+      #leaf {
+        z-index: 10;
+      }
+
+      #plant {
+        z-index: 10;
+      }
+
+      body {
+        background-color: rgb(10, 50, 40);
+      }
+
+      #logo {
+        position: relative;
+        width: 10%;
+      }
+
+      .openable .content {
+        height: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 20, 0.1),
+          rgba(255, 255, 255, 0)
+        );
+        backdrop-filter: blur(100px);
+        -webkit-backdrop-filter: blur(100px);
+        border-radius: 20px;
+        border: 0px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.5s ease-out;
+      }
+
+      .openable .content * {
+        overflow: hidden;
+        padding-inline: 1rem;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      .openable.open .content {
+        height: auto;
+        grid-template-rows: 1fr;
+      }
+
+      .content {
+        text-align: center;
+      }
+
+      .header {
+        background-color: rgba(0, 0, 0, 0);
+        border: 0;
+        font-size: 1rem;
+        padding-top: 2vw;
+        color: whitesmoke;
+      }
+
+      .header:hover {
+        cursor: pointer;
+        animation: glow2 3s ease-in-out infinite alternate;
+        animation-delay: 0.1s;
+      }
+
+      @keyframes glow2 {
+        from {
+          text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white,
+            0 0 40px white, 0 0 50px white;
+        }
+        to {
+          text-shadow: 0 0 30px white, 0 0 35px white;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cost.html">Cost</a></li>
+          <li><a href="rebate.html">Rebate</a></li>
+          <li><a href="practices.html" class="active">Green Practices</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="workscited.html">References</a></li>
+        </ul>
+      </nav>
+    </main>
+
+    <section id="parallax">
+      <img src="media/teal.png" id="bg" />
+      <img src="media/leaf.png" id="leaf" />
+      <img src="media/plant.png" id="plant" />
+      <img src="media/hill1.png" id="hill1" />
+      <img src="media/hill2.png" id="hill2" />
+      <img src="media/hill3.png" id="hill3" />
+      <img src="media/hill4.png" id="hill4" />
+      <img src="media/hill5.png" id="hill5" />
+      <div id="titleDiv">
+        <h2 id="titleGreen"><span id="green"> Green</span> Practices</h2>
+      </div>
+    </section>
+
+    <script>
+      let leaf = document.getElementById("leaf");
+      let title = document.getElementById("titleGreen");
+      let hill1 = document.getElementById("hill1");
+      let hill4 = document.getElementById("hill4");
+      let hill5 = document.getElementById("hill5");
+
+      window.addEventListener("scroll", function () {
+        var value = window.scrollY;
+
+        leaf.style.top = value * -1.5 + "px";
+        leaf.style.left = value * 1.5 + "px";
+        hill5.style.left = value * 1.5 + "px";
+        hill4.style.left = value * -1.5 + "px";
+        hill1.style.top = value * 1.5 + "px";
+      });
+
+      function openOpenable(e) {
+        e.parentElement.classList.toggle("open");
+        if (e.parentElement.classList.contains("open")) {
+          e.parentElement.children[1].scrollIntoView({ behavior: "smooth" });
+          e.innerHTML = e.innerHTML.replace("▼", "▲");
+        } else {
+          e.innerHTML = e.innerHTML.replace("▲", "▼");
+        }
+      }
+    </script>
+
+    <div id="textContainer">
+      <h3 id="text">
+        Here are some ways you can improve your environmental footprint. Do as
+        much as you can -- everything counts!
+      </h3>
+    </div>
+
+    <div class="grid">
+      <div class="box">
+        <img src="media/recycling.png" class="flexImg" />
+        <h2 class="title">RECYCLING</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              Increased recycling leads to the making of more reusable products.
+              Using Reusable products helps with waste management.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/solar.png" class="flexImg" />
+        <h2 class="title">SOLAR</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              The installation of solar panels on your home can reduce your
+              reliance on electricity from fossil fuels. Solar panels also lower
+              utility costs, directly saving you money.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/compost.png" class="flexImg" />
+        <h2 class="title">COMPOSTING</h2>
+
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              The use of composting helps add organic matter to the soil and
+              increases the nutrient content and the biodiversity of microbes in
+              the soil. Additionally, composting helps reduce water waste by
+              helping solid retain water.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/foodwaste.png" class="flexImg" />
+        <h2 class="title">FOOD WASTE</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              Wasting food affects the environment negatively as it ends up in
+              landfills and rots which produces methane - a greenhouse gas. To
+              prevent this, try and understand your portion size, and make sure
+              to eat everything you keep in your plate.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/waterwaste.png" class="flexImg" />
+        <h2 class="title">WATER</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              Conserving water in small ways can make a big impact on the
+              environment. Shutting off water while you are brushing your teeth,
+              taking shorter showers, filling up your dishwasher and washing
+              machine fully before starting it, and fixing leaks are all ways to
+              decrease water usage.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/electricity.png" class="flexImg" />
+        <h2 class="title">ELECTRIC</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              Decrease your power consumption by installing more energy
+              efficient appliances and LED lights throughout your home. Turn off
+              lights and unplug appliances when you are not home for an extended
+              period of time.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/transportation.png" class="flexImg" />
+        <h2 class="title">TRANSPORT</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              Take public transportation and carpool with others when possible.
+              Consider buying an electric or hybrid vehicle that is not
+              oversized for your needs, as it uses less gas and creates fewer
+              emissions than a larger gasoline vehicle.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/reusuables.png" class="flexImg" />
+        <h2 class="title">REUSUABLES</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              The use of reusable containers can reduce the amount of single-use
+              plastic sent to landfills. Use containers made of glass or
+              reusable plastic for food-safe storage instead of plastic zipper
+              bags. Other reusables include shopping bags, cups and straws made
+              of durable plastic or metal.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/digital.png" class="flexImg" />
+        <h2 class="title">DIGITAL</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              The use of digital technology is responsible for around 5% of
+              total greenhouse gas emissions. According to new studies, this
+              number is expected to double within the coming years. To prevent
+              this, it is best to avoid using technology when not required, and
+              make sure to turn off all devices when not in use.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/heat.png" class="flexImg" />
+        <h2 class="title">HEAT</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              Ensure your windows and insulation are efficient at trapping heat
+              inside your home.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/gardening.png" class="flexImg" />
+        <h2 class="title">GARDENING</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              Try to have a garden where you grow trees and other tall plants.
+              This can have a substantial improvement on your energy bill as
+              large plants can help insulate your house in the winter, and cool
+              it during the summer.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/farming.png" class="flexImg" />
+        <h2 class="title">FARMING</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              Try to grow your own food as much as possible thorugh something
+              like a garden, or at the very least get grocieries from a local
+              farmer's market. This ensures that the food is free from
+              pesticides and harmful farming practices that waste energy and are
+              harmful for the environment.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/vehicle.png" class="flexImg" />
+        <h2 class="title">E-VEHICLES</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              Consider investing in a hybrid or full-on electric vehicle to use
+              as your name mode of transportation. Electric vehicles can be much
+              cheaper to refuel and are also much better for the environment.
+              They are also much more energy-efficient relative to cars running
+              on gasoline.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <img src="media/fossilfuel.png" class="flexImg" />
+        <h2 class="title">FOSSIL FUEL</h2>
+        <div class="openable">
+          <button class="header" onclick="openOpenable(this)">
+            Learn more ▼
+          </button>
+          <div class="content">
+            <p>
+              Massive amounts of air pollution is caused by the use of fossil
+              fuels, causing acid rain, damage to crops, and harm to wildlife.
+              To help prevent this, try using products that require little to no
+              fossil fuels. For example switching to electric or hybrid cars, or
+              switching to solar energy for your home.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

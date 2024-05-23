@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rebate - Solarized Solutions</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <script>
+    function calculateRebate() {
+      const panelsEl = document.getElementById("panels");
+      const utilityEl = document.getElementById("utility");
+      const stateEl = document.getElementById("state");
+
+      if (!panelsEl.value) {
+        panelsEl.value = 15;
+      }
+
+      if (!utilityEl.value) {
+        utilityEl.value = 1000;
+      }
+
+      if (!stateEl.value) {
+        stateEl.value = 1000;
+      }
+
+      const panels = parseFloat(panelsEl.value);
+      const utility = parseFloat(utilityEl.value);
+      const state = parseFloat(stateEl.value);
+
+      if (isNaN(panels)) {
+        panelsEl.value = 15;
+        panels = 15;
+      }
+      if (isNaN(utility)) {
+        utilityEl.value = 1000;
+        utility = 1000;
+      }
+      if (isNaN(state)) {
+        stateEl.value = 1000;
+        state = 1000;
+      }
+
+      const rebate = (panels * 1000 - utility - state) * 0.3;
+
+      document.getElementById(
+        "rebatecalc"
+      ).textContent = `$${rebate.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`;
+    }
+
+    function openOpenable(e) {
+      e.parentElement.classList.toggle("open");
+      if (e.parentElement.classList.contains("open")) {
+        e.parentElement.children[1].scrollIntoView({ behavior: "smooth" });
+        e.innerHTML = e.innerHTML.replace("▼", "▲");
+      } else {
+        e.innerHTML = e.innerHTML.replace("▲", "▼");
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: grey;
+    }
+    input {
+      background-color: rgb(212, 224, 214);
+      color: rgb(19, 19, 19);
+      width: 30%;
+      padding: 1%;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    label {
+      border-left: 2%;
+      text-align: left;
+    }
+
+    .credit {
+      background-color: rgb(255, 255, 255);
+      color: rgb(55, 117, 49);
+      width: 30%;
+      padding: 0.5rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 15px;
+    }
+
+    .calcButton {
+      display: inline-block;
+      border: 0;
+      cursor: pointer;
+      background: #18974b;
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 1% 1.5% 1.2%;
+      font-size: 150%;
+      font-weight: 700;
+      line-height: 1;
+      transition: transform 100ms, background 100ms;
+    }
+
+    .calcButton:hover {
+      transform: translateY(-2px);
+    }
+
+    .costlink {
+      color: white;
+    }
+
+    .costlink:link {
+      color: rgb(14, 100, 43);
+      background-color: transparent;
+      text-decoration: underline;
+    }
+    .costlink:visited {
+      color: rgb(14, 100, 43);
+      background-color: transparent;
+      text-decoration: none;
+    }
+    .costlink:hover {
+      color: rgba(177, 172, 172, 0.704);
+      background-color: transparent;
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style-position: inside;
+    }
+
+    .info {
+      padding: 2%;
+      margin-top: 2%;
+      margin-right: 2%;
+      background-color: rgb(173, 193, 200);
+      color: rgb(19, 19, 19);
+      border-radius: 25px;
+      text-align: left;
+    }
+
+    .image {
+      float: right;
+      width: 50%;
+      height: 50%;
+      padding: 5%;
+      border-radius: 50px;
+    }
+
+    .infoBG {
+      border-radius: 25px;
+      padding: 1%;
+      margin-right: 2%;
+      margin-left: 2%;
+      float: left;
+      text-align: center;
+      margin-top: 2%;
+      background-color: rgb(51, 80, 62);
+      margin-top: 3rem;
+    }
+
+    @media (min-width: 1000px) {
+      .infoBG {
+        width: 45%;
+      }
+      .calculator {
+        width: 45%;
+      }
+    }
+  </style>
+  <body>
+    <main>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cost.html">Cost</a></li>
+          <li><a href="rebate.html" class="active">Rebate</a></li>
+          <li><a href="practices.html">Green Practices</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="workscited.html">References</a></li>
+        </ul>
+      </nav>
+    </main>
+    <div class="infoBG">
+      <h1>Federal Tax Credit</h1>
+      <p>
+        When a taxpayer installs solar panels or another renewable energy system
+        in their home, the federal residential solar energy credit can be
+        claimed on federal income taxes. After installation of a residential
+        solar panel system, the homeowner will recieve a 30% tax credit on the
+        purchase price of the system, minus any utility provider or state
+        government rebates. Use our calculator to estimate the federal tax
+        credit you will recieve.
+      </p>
+
+      <div class="info">
+        <h2 style="text-align: center">Using the Calculator</h2>
+        1. Enter in the amount of solar panels your home will require. Use the
+        <a class="costlink" href="cost.html">Cost</a> page to get an estimate
+        for this number based on your region and the amount of power your
+        household consumes.<br /><br />2. Visit your utility provider's website
+        or contact them to see if they offer any rebates for installing a solar
+        panel system on your home. If your utility provider does not provide any
+        rebates, enter "0".<br /><br />3. If your state government provides
+        rebates on the installation of solar panel systems, enter the rebate
+        amount. If your state does not provide any rebates, enter "0". A current
+        list and map (as of March 2024) of state governments that offer rebates
+        are below. <img class="image" src="media/map.png" /> <br /><br />States
+        that offer rebates:
+        <ul>
+          <li>Arizona</li>
+          <li>California</li>
+          <li>Colorado</li>
+          <li>Connecticut</li>
+          <li>Florida</li>
+          <li>Illinois</li>
+          <li>Maryland</li>
+          <li>Massachusetts</li>
+          <li>Minnesota</li>
+          <li>New York</li>
+          <li>New Jersey</li>
+          <li>Ohio</li>
+          <li>Texas</li>
+          <li>Virginia</li>
+        </ul>
+        <div></div>
+      </div>
+    </div>
+    <div
+      class="calculator"
+      style="
+        padding: 1%;
+        margin-top: 5%;
+        margin-right: 2%;
+        float: right;
+        text-align: right;
+        font-weight: bolder;
+        background-color: rgb(46, 95, 108);
+        border-radius: 25px;
+      "
+    >
+      <img
+        style="width: 50%; height: 50%; display: block; margin: auto"
+        src="media/reggrn.png"
+      />
+      <h1 style="text-align: center">
+        Solarize's Federal Tax Credit Calculator
+      </h1>
+      <form>
+        <label for="panels">Number of solar panels your home will need:</label>
+        <input
+          type="number"
+          inputmode="numeric"
+          id="panels"
+          step="1"
+          placeholder="15 (average)"
+          required
+        />
+        <br /><br />
+        <label for="utility">Utility provider rebate: $</label>
+        <input
+          type="number"
+          inputmode="numeric"
+          id="utility"
+          step="100"
+          placeholder="1000"
+          required
+        />
+        <br /><br />
+        <label for="state">State government rebate: $</label>
+        <input
+          type="number"
+          inputmode="numeric"
+          id="state"
+          step="100"
+          placeholder="1000"
+          required
+        />
+        <br /><br />
+        <div style="text-align: center">
+          <button type="button" class="calcButton" onclick="calculateRebate()">
+            Calculate 30% Federal Tax Credit
+          </button>
+        </div>
+      </form>
+      <p style="text-align: center">
+        Factoring in cost of solar panel installation and utility/state rebates,
+        you will recieve a federal tax credit of:
+      </p>
+      <div class="credit" style="overflow: auto">
+        <span id="rebatecalc" style="text-align: center; overflow: auto"
+          >$3,900.00</span
+        >
+      </div>
+    </div>
+  </body>
+</html>

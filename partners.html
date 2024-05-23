@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partners - Solarize Solutions</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <style>
+      body {
+        background-color: rgb(33, 49, 46);
+      }
+
+      .pTop::after {
+        content: attr(data-text);
+        position: absolute;
+        font-size: 1vw;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 5px 10px;
+        width: 20vw;
+        margin-top: 10%;
+        margin-bottom: 10%;
+        background-color: rgba(28, 114, 201, 0.9);
+        color: white;
+        border-radius: 5px;
+        white-space: normal;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+        transition-delay: 0.25s;
+        pointer-events: none;
+      }
+
+      .pBottom::after {
+        content: attr(data-text);
+        position: absolute;
+        font-size: 1vw;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 5px 10px;
+        width: 75%;
+        margin-top: 10%;
+        margin-bottom: 10%;
+        background-color: rgba(28, 114, 201, 0.9);
+        color: white;
+        border-radius: 5px;
+        white-space: normal;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        pointer-events: none;
+      }
+
+      .pTop:hover::after {
+        opacity: 1;
+      }
+
+      .pBottom:hover::after {
+        opacity: 1;
+      }
+
+      img {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+        padding: 5%;
+      }
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+
+      .gridTop {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-auto-rows: minmax(auto);
+        background-color: rgba(4, 41, 77, 0.8);
+        padding: 2%;
+        grid-gap: 5%;
+      }
+
+      .gridTop {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10vw 15vw;
+        padding: 8vw 15vw;
+      }
+
+      .gridTop .pTop {
+        position: relative;
+        width: 25vw;
+        height: 20vw;
+        background: #333333;
+        border-radius: 20px;
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+        transition: 0.5s;
+      }
+
+      .gridTop .pTop:hover {
+        transform: scale(1.5);
+      }
+
+      .gridBottom {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        background-color: rgba(56, 105, 154, 0.8);
+        grid-auto-rows: minmax(auto);
+        padding: 2%;
+        grid-gap: 5%;
+      }
+
+      .gridBottom {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8vw 15vw;
+        padding: 8vw 15vw;
+      }
+
+      .gridBottom .pBottom {
+        position: relative;
+        width: 20vw;
+        height: 15vw;
+        background: #333333;
+        border-radius: 30%;
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+        transition: 0.5s;
+      }
+
+      .gridBottom .pBottom:hover {
+        border-radius: 10%;
+        transform: scale(1.3);
+      }
+
+      .pBottom {
+        border-radius: 25px;
+        position: relative;
+        display: inline-block;
+        height: 100%;
+        background-color: rgb(47, 101, 160);
+        transition: background-color 2s ease-out 100ms;
+      }
+
+      @media (max-width: 600px) {
+        .gridTop {
+          flex-direction: column;
+        }
+
+        .gridTop .pTop {
+          width: 60vw;
+          height: 60vw;
+        }
+
+        .gridBottom {
+          flex-direction: column;
+        }
+
+        .gridBottom .pBottom {
+          width: 80vw;
+          height: 60vw;
+        }
+
+        .gridTop .pTop:hover {
+          transform: scale(1);
+        }
+
+        .gridBottom .pBottom:hover {
+          transform: scale(1);
+        }
+
+        .gridTop .pTop::after {
+          font-size: 2.5vw;
+          width: 50vw;
+        }
+
+        .gridBottom .pBottom::after {
+          font-size: 2.5vw;
+          width: 50vw;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cost.html">Cost</a></li>
+          <li><a href="rebate.html">Rebate</a></li>
+          <li><a href="practices.html">Green Practices</a></li>
+          <li><a href="partners.html" class="active">Partners</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="workscited.html">References</a></li>
+        </ul>
+      </nav>
+
+      <div class="partners">
+        <div class="partners-text">
+          <h1 style="font-size: 200%; text-align: center; padding: 1%" ,>
+            Solarize is proud to partner with 2 major companies that have played
+            a vital role in the advancement of green energy.
+          </h1>
+          <h1 style="font-size: 90%; text-align: center" ,>
+            Hover for additonal information on a partner
+          </h1>
+        </div>
+        <div class="gridTop">
+          <div
+            class="pTop"
+            data-text="Solartree is a solar panel installation company that has installed over 375,000 solar roofs on homes nationwide. Inquire about how much you could save with Solartree today!"
+          >
+            <a href="mailto:contact@solartree.com"
+              ><img src="media/solartree.png"
+            /></a>
+          </div>
+          <div
+            class="pTop"
+            data-text="Sustainavolt is highly regarded as one of the world's most easy to use and effective on-the-go solar panel systems. Perfect for camping, hiking and any other off-the-grid activity, Sustainavolt's modular solar panels are individually connectable to fit your energy needs."
+          >
+            <a href="mailto:contact@sustainavolt.com"
+              ><img src="media/sustainavolt.png"
+            /></a>
+          </div>
+        </div>
+        <h1 style="text-align: center" ,>Our additional partners include:</h1>
+        <div class="gridBottom">
+          <div
+            class="pBottom"
+            data-text="Purenergy is a mobile app that helps you track your energy consumption habits. Based on your habits, the app will give you advice on how to become a more eco-friendly person."
+          >
+            <a href="mailto:contact@purenergy.com"
+              ><img src="media/purenergy.png"
+            /></a>
+          </div>
+          <div
+            class="pBottom"
+            data-text="Verdant Power Systems is an energy consulting firm for homeowners. Verdant helps choose the best and most affordable option when it comes to switching to the greener side."
+          >
+            <a href="mailto:contact@verdant.com"
+              ><img src="media/verdant.png"
+            /></a>
+          </div>
+          <div
+            class="pBottom"
+            data-text="Clean Current is a household solar energy storage system. Run green energy almost 24/7 with the CCPAK battery and stop worrying about power outages!"
+          >
+            <a href="mailto:contact@cleancurrent.com"
+              ><img src="media/cleancurrent.png"
+            /></a>
+          </div>
+          <div
+            class="pBottom"
+            data-text="GreenVista is a referral program that helps make the world more reliant on solar energy, one step at a time. Both referrers and referees are rewarded with great discounts at retailers nationwide."
+          >
+            <a href="mailto:contact@greenvista.com"
+              ><img src="media/greenvista.png"
+            /></a>
+          </div>
+        </div>
+        <h2 style="text-align: center" ,>
+          To contact a partner via e-mail, please click on the logo of the
+          company.
+        </h2>
+      </div>
+    </main>
+  </body>
+</html>

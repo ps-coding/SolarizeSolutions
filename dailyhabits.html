@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Habits - Solarize Solutions</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      .openable {
+        font-size: 1.5rem;
+        background-color: grey;
+        border-radius: 10px;
+        margin: 1rem;
+      }
+
+      .openable .header {
+        font-size: inherit;
+        background-color: none;
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+      }
+
+      .openable .content {
+        height: 0;
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.5s ease-out;
+      }
+
+      .openable .content * {
+        overflow: hidden;
+        padding-inline: 1rem;
+      }
+
+      .openable.open .content {
+        height: auto;
+        grid-template-rows: 1fr;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cost.html">Cost</a></li>
+          <li><a href="rebate.html">Rebate</a></li>
+          <li><a href="dailyhabits.html" class="active">Daily Habits</a></li>
+          <li><a href="quiz.html">How Green Are You?</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="workscited.html">Further Reading</a></li>
+        </ul>
+      </nav>
+      <div class="image-container1">
+        <div class="overlay-text1">
+          <h2>DAILY HABITS</h2>
+          <p id="ctaText">What Can You Do?</p>
+        </div>
+      </div>
+      <div class="openable">
+        <button class="header" onclick="openOpenable(this)">
+          Conserve Energy at Home ▼
+        </button>
+        <div class="content">
+          <p>
+            Turn off lights, appliances, and electronics when not in use. Use
+            energy-efficient appliances and light bulbs. Unplug chargers and
+            electronic devices when they're not in use to avoid "phantom" energy
+            consumption.
+          </p>
+        </div>
+      </div>
+      <div class="openable">
+        <button class="header" onclick="openOpenable(this)">
+          Use Renewable Energy Sources ▼
+        </button>
+        <div class="content">
+          <p>
+            If possible, switch to a clean energy provider or consider
+            installing solar panels on your property. Purchase renewable energy
+            certificates to support clean energy projects. For instance,
+          </p>
+        </div>
+      </div>
+      <div class="openable">
+        <button class="header" onclick="openOpenable(this)">
+          Use Renewable Energy Sources ▼
+        </button>
+        <div class="content">
+          <p>
+            If possible, switch to a clean energy provider or consider
+            installing solar panels on your property. Purchase renewable energy
+            certificates to support clean energy projects.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function openOpenable(e) {
+        e.parentElement.classList.toggle("open");
+        if (e.parentElement.classList.contains("open")) {
+          e.parentElement.children[1].scrollIntoView({ behavior: "smooth" });
+          e.innerHTML = e.innerHTML.replace("▼", "▲");
+        } else {
+          e.innerHTML = e.innerHTML.replace("▲", "▼");
+        }
+      }
+    </script>
+  </body>
+</html>
