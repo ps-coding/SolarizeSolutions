@@ -105,10 +105,3 @@ nav ul li a:hover {
   background-color: rgb(4, 89, 10);
   right: 50%;
 }
-
-@media (min-width: 800px) {
-  nav ul li a {
-    font-size: 1vw;
-    padding: 5px 10px;
-  }
-}

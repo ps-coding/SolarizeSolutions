@@ -102,21 +102,6 @@
           textCursor 0.5s step-end infinite alternate;
       }
 
-      @media (max-width: 800px) {
-        .content h2 {
-          display: block;
-          font-size: 1.2rem;
-          padding: 0.5rem;
-          animation: none;
-          overflow: visible;
-          white-space: normal;
-          border: none;
-          width: unset;
-          border-radius: 10px;
-          margin: 0 5px;
-        }
-      }
-
       @keyframes textCursor {
         50% {
           border-color: transparent;
@@ -227,6 +212,33 @@
       .openable.open .content {
         height: auto;
         grid-template-rows: 1fr;
+      }
+
+      @media (max-width: 800px) {
+        .content h2 {
+          display: block;
+          font-size: 1.2rem;
+          padding: 0.5rem;
+          animation: none;
+          overflow: visible;
+          white-space: normal;
+          border: none;
+          width: unset;
+          border-radius: 10px;
+          margin: 0 5px;
+        }
+
+        .openable {
+          margin: 0 auto;
+          display: block;
+          max-width: 80%;
+        }
+
+        .openable .content {
+          max-width: 80%;
+          margin: 0 auto;
+          margin-bottom: 1rem;
+        }
       }
     </style>
     <script src="script.js" defer></script>
